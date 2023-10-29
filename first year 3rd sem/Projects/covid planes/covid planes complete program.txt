@@ -1,0 +1,223 @@
+/*
+World is suffering from COVID-19 and the Indian Government has decided to airlift the Indians those
+are in different countries. The N number of planes are ready to fly from Bengaluru international
+airport’srun way, which is having only one entry and exit point.The commander of the operation
+will send country name CName to pilots. if Cname matches with destination country name, plane will
+fly from the run way. Otherwise the plane will enter in the second run way. Commander wants to
+know the number of planes takes off from the first run way. He also wants to know the number of
+planes entered into second runway and maximum seating capacity plane in second runway. So that
+he can use it for his next operation.
+
+Store the plane information with following fields: Plane ID, destination country Name and seating
+capacity of the plane. Insert N number of planes to the runway.
+Constraints:
+
+ 0 ≤ N ≤ 50
+ 1000 ≤ Plane Id ≤ 5000
+ Destination country Name Maximum 30 characters
+ 0 ≤ seating capacity of the plane ≤ 1000
+ CName Maximum 30 characters
+
+
+Input Format :Enter N in first line. In next lines enter each plane information on separate line. Enter
+CName on last line.
+
+
+Output format: First line shows Count of take off planes from first runway. Second line displays
+count of planes in the second runway. Next lines give plane information in second runway. Last line
+shows information of maximum seating capacity plane in second run way.
+
+
+Test case 1:
+Input:
+5
+1001 USA 300
+1005 UAE 500
+1002 USA 600
+1003 Japan 300
+1006 UK 1000
+USA
+
+
+Output :
+2
+3
+1005 UAE 500
+1003 Japan 300
+1006 UK 1000
+1006 UK 1000
+
+
+Test case 2:
+5
+1001 USA 300
+1005 USA 500
+1002 USA 600
+1003 USA 300
+1006 USA 1000
+USA
+
+Output :
+5
+0
+
+
+answer:
+send country name CName to pilots.
+*/
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct plane_info
+{
+    int id;
+    char dest[30];
+    int seats;
+    struct plane_info* next;
+};
+
+typedef struct plane_info* NODE;
+
+NODE read_nodes(NODE,int);
+NODE read_struct(NODE);
+NODE getnode();
+NODE insert_end(NODE,NODE);
+void display_one(NODE);
+void display_all(NODE);
+int runway(NODE,char[]);
+void run2_display(NODE,char[]);
+
+int main()
+{
+     int n,run1,run2;
+     NODE head;
+     char Cname[30];
+     printf("\nenter the number of planes\t");
+     scanf("%d",&n);
+
+     head = read_nodes(head,n);
+     display_all(head);
+
+     printf("\nenter the name of the country\t");
+     scanf("%s",&Cname);
+     run1=runway(head,Cname);
+     printf("\nthe number of planes from first runway is %d",run1);
+
+     run2=n-run1;
+     printf("\nthe number of planes from second runway is %d",run2);
+     run2_display(head,Cname);
+     printf("\n\n");
+
+     return 0;
+}
+
+
+NODE read_nodes(NODE head,int n)
+{
+    NODE newnode;
+    int i;
+
+    printf("\n(head information)");
+    head=read_struct(head);
+
+    for(i=0;i<(n-1);i++)
+    {
+        newnode=read_struct(newnode);
+        head=insert_end(head,newnode);
+    }
+
+    return (head);
+}
+
+
+NODE read_struct(NODE temp)
+{
+    temp=getnode();
+
+    printf("\nenter plane details\t");
+
+    printf("\nenter plane id\t");
+    scanf("%d",&temp->id);
+
+    printf("enter plane destination\t");
+    scanf("%s",temp->dest);
+
+    printf("enter number of seats\t");
+    scanf("%d",&temp->seats);
+
+    return (temp);
+}
+
+
+NODE getnode()
+{
+    NODE temp;
+    temp=(NODE)malloc(sizeof(struct plane_info));
+    temp->next= NULL;
+
+     return (temp);
+}
+
+NODE insert_end(NODE head,NODE newnode)
+{
+     NODE temp=head;
+
+     if(head==NULL)
+     {
+         printf("\n\nif head==NULL in insert end fun\n\n");
+         head=newnode;
+         head->next=NULL;
+         return (head);
+     }
+
+     else
+     {
+         while(temp->next!=NULL)
+         {
+             temp=temp->next;
+         }
+         temp->next=newnode;
+         newnode->next=NULL;
+     }
+
+
+     return(head);
+}
+
+void display_one(NODE temp)
+{
+    printf("\n%d\t%s\t%d\t",temp->id,temp->dest,temp->seats);
+}
+
+
+void display_all(NODE temp)
+{
+    printf("\nplaneID\tdestination\tseats\t");
+    while (temp!=NULL)
+    {
+        printf("\n%d\t %s\t\t%d\t",temp->id,temp->dest,temp->seats);
+        temp=temp->next;
+    }
+
+    return;
+}
+
+int runway(NODE head, char Cname[30])
+{
+    int count=0;
+    NODE temp=head;
+
+    while(temp!=NULL)
+    {
+        if(strcmp(Cname,temp->dest)==0)
+        {
+            count++;
+        }
+        temp=temp->next;
+    }
+    return count;
+}
+

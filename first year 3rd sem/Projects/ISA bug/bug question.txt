@@ -1,0 +1,35 @@
+
+Q.
+
+The bug traker template is used to track the bugs and errors.
+
+each bug is assigned to a team member and its progress is monitored
+
+Different types of bugs and errors may be
+1. syntax errors
+2. logic errors
+3. unit level bugs
+4. calculation bugs
+5. out of bound bugs
+
+Each bug is assigned a priority number
+
+status of each bug is maintained which may be
+waiting
+fixed
+cancelled
+in progress
+
+the tracker also stores how many days old the bug is
+
+
+identify the members f the bug structure and do the following
+1. to insert elements according to priority
+2. to count the no. of bugs that are in progress
+3. find the oldest bug and display output.
+
+
+Let the priority number be as mentioned
+
+
+

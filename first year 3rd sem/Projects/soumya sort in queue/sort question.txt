@@ -1,0 +1,10 @@
+
+
+Question:
+Implement a linear queue using structure...
+Input: name, sex, age; input: total no of people, their names, sexes, ages.
+Output: divide the given names into 3 queues one for male one for female one for senior citizen
+
+Code by Khushi MA
+(I have added other gender to the list)
+

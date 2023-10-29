@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1660980267 source:c:\users\hp\desktop\number crush\crush question.c
+
+1660982931 source:c:\users\hp\desktop\number crush\crush condition.c
+	"crush header.h"
+
+1660983058 c:\users\hp\desktop\number crush\crush header.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<string.h>
+
+1660983057 source:c:\users\hp\desktop\number crush\crush general.c
+	"crush header.h"
+
+1660982870 source:c:\users\hp\desktop\number crush\crush main.c
+	"crush header.h"
+

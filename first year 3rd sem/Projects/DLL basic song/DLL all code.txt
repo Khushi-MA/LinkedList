@@ -1,0 +1,359 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+typedef struct //date
+{
+    int d, m, y;
+}DATE;
+
+typedef struct //song
+{
+    char name[100], singer[100];
+    DATE date;
+}SONG;
+
+struct node
+{
+    SONG data;
+    struct node *next, *prev;
+};
+
+typedef struct node*  NODE;
+
+void readsong(SONG*);
+NODE getnode();
+NODE addatthebegin(NODE , SONG );
+void displayall(NODE );
+void displayonedown(NODE );
+void displayoneline(NODE);
+void displayallreverse(NODE );
+NODE deleteatthebegin(NODE );
+NODE deletesong(NODE,char[]);
+NODE deleteattheend(NODE );
+NODE addattheend(NODE,SONG);
+int countsinger (NODE ,char []);
+int countsongs(NODE );
+NODE insertposition (NODE , SONG , int );
+
+int main()
+{
+    NODE head,temp;
+    head=NULL;
+    SONG s;
+    char  fsinger[100];
+    int ch1, ch2, count, pos,i;
+
+    do
+    {
+        printf("\nSong functions:\n1.Insert\n2.Delete\n3.Count\n4.Display\nEnter choice\t");
+        printf("enter '100' to exit\n");
+        scanf("%d",&ch1);
+
+        switch(ch1)
+        {
+            case 1: printf("\nInsert:\n1.Beginning\n2.End\n3.By position\nEnter choice\t");
+                    scanf("%d",&ch2);
+                    switch(ch2)
+                    {
+                        case 1: readsong(&s);
+                                head=addatthebegin(head,s);
+                                break;
+
+                        case 2: readsong(&s);
+                                head=addattheend(head,s);
+                                break;
+
+                        case 3: printf("\nEnter the song details");
+                                readsong(&s);
+                                printf("\nEnter the position\t");
+                                scanf("%d",&pos);
+                                if(pos<=0 || pos>1+count)
+                                {
+                                    printf("\nInvalid position");
+                                    break;
+                                }
+                                count=countsongs(head);
+                                head=insertposition(head,s,pos);
+                                break;
+                    }
+                    break;
+
+            case 2: printf("\nDelete:\n1.Beginning\n2.End\n3.By song\n");
+                    scanf("%d",&ch2);
+                    switch(ch2)
+                    {
+                        case 1: head=deleteatthebegin(head);
+                                break;
+
+                        case 2: head=deleteattheend(head);
+                                break;
+
+                        case 3: printf("\nenter the name of the singer\t");
+                                scanf("%s",fsinger);
+                                count=countsinger(head,fsinger);
+                                printf("\n' %s ' has sung %d songs in your playlist",fsinger, count);
+                                break;
+                    }
+                    break;
+
+            case 3: printf("\nCount:\n1.Total songs\n2.By singer\n");
+                    scanf("%d",&ch2);
+                    switch(ch2)
+                    {
+                        case 1: count=countsongs(head);
+                                if(count==0)
+                                {
+                                    printf("\nNo songs in the list");
+                                    break;
+                                }
+                                printf("\nThere are %d number of song(s) in the list\n",count);
+                                break;
+
+                        case 2: printf("\nenter the name of the singer\t");
+                                scanf("%s",fsinger);
+                                count=countsinger(head,fsinger);
+                                printf("\n'%d songs",count);
+                                break;
+                    }
+                    break;
+
+            case 4: printf("\nDisplay:\n1.All\n2.In reverse\n3.By position\n");
+                    scanf("%d",&ch2);
+                    switch(ch2)
+                    {
+                        case 1: displayall(head);
+                                break;
+
+                        case 2: displayallreverse(head);
+                                break;
+
+                        case 3: printf("\nEnter the position\t");
+                                scanf("%d",&pos);
+                                if(pos<=0 || pos>1+count)
+                                {
+                                    printf("\nInvalid position");
+                                    break;
+                                }
+                                for(temp=head,i=1;i<pos-1;temp=temp->next);
+                                displayonedown(temp);
+                                break;
+                    }
+                    break;
+
+            case 100: break;
+        }
+    }while(ch1!=100);
+    return 0;
+}
+
+void readsong(SONG *s)
+{
+    printf("\nname of the song\t");
+    scanf("%s",s->name);
+    printf("singer\t");
+    scanf("%s",s->singer);
+    printf("date\t ");
+    scanf("%d",&s->date.d);
+    printf("month\t ");
+    scanf("%d",&s->date.m);
+    printf("year\t ");
+    scanf("%d",&s->date.y);
+    return;
+}
+
+NODE getnode()
+{
+    NODE p;
+    p=(NODE)malloc(sizeof(struct node));
+    return p;
+}
+
+NODE addatthebegin(NODE head, SONG s)
+{
+    NODE p;
+    p=getnode();
+    p->prev=p->next=NULL;
+    p->data=s;
+
+    if(head!=NULL)
+    {
+        p->prev=NULL;
+        head->prev=p;
+        p->next=head;
+    }
+
+    head=p;
+    return head;
+}
+
+NODE addattheend(NODE head, SONG s)
+{
+    NODE p;
+    p=getnode();
+    p->prev=p->next=NULL;
+    p->data=s;
+    if(head==NULL)
+    {
+        head=p;
+        head->next=head->prev=NULL;
+        return head;
+    }
+    NODE temp;
+    for(temp=head;temp->next!=NULL;temp=temp->next);
+    temp->next=p;
+    p->prev=temp;
+    return head;
+}
+
+NODE insertposition (NODE head, SONG s, int pos)
+{
+    NODE p,temp;
+    p=getnode();
+    p->prev=p->next=NULL;
+    p->data=s;
+    int i;
+    for(temp=head,i=1;i<pos-1;temp=temp->next);
+    p->next=temp->next;
+    (temp->next)->prev=p;
+    temp->next=p;
+    p->prev=temp;
+    return head;
+}
+
+NODE deleteatthebegin(NODE head)
+{
+    if(head==NULL)
+    {
+        printf("\nEmpty list");
+        return NULL;
+    }
+
+    if(head->next==NULL)
+    {
+        printf("\nonly one node present in the list");
+        free(head);
+        return head;
+    }
+    NODE temp;
+    temp=head;
+    head=head->next;
+    head->prev=NULL;
+    printf("\nthe node being deleted");
+    displayonedown(temp);
+    free(temp);
+    return head;
+}
+
+NODE deleteattheend(NODE head)
+{
+    NODE temp;
+    if(head==NULL)
+    {
+        printf("list is empty");
+        return NULL;
+    }
+
+    for(temp=head;temp->next!=NULL;temp=temp->next);
+    (temp->prev)->next=NULL;
+    free(temp);
+    return head;
+}
+
+NODE deletesong(NODE head,char name[100])
+{
+    if(head==NULL)
+    {
+        printf("\n\nlist is empty\n");
+        return NULL;
+    }
+
+    NODE temp;
+    int flag=0;
+    for(temp=head;temp->next!=NULL;temp=temp->next)
+    {
+        if(strcmp(name,temp->data.name)==0)
+        {
+            flag = 1;
+            break;
+        }
+    }
+
+    if(flag==0)
+    {
+        printf("\nname not found\n");
+        return head;
+    }
+
+    if(temp->next==NULL)
+    {
+        head=deleteatthebegin(head);
+        return head;
+    }
+
+    (temp->prev)->next = temp->next;
+    (temp->next)->prev = temp->prev;
+    free(temp);
+    return head;
+}
+
+int countsinger (NODE head,char fsinger[100])
+{
+    int cnt;
+    NODE temp;
+    for(temp=head,cnt=0;temp!=NULL;temp=temp->next)
+    {
+        if(strcmp(fsinger,temp->data.singer)==0)
+        {
+            cnt++;
+            displayonedown(temp);
+        }
+    }
+
+    return cnt;
+}
+
+int countsongs(NODE head)
+{
+    NODE temp;
+    int cnt;
+    for(temp=head,cnt=0;temp!=NULL;temp=temp->next,cnt++);
+    return cnt;
+}
+
+void displayall(NODE head)
+{
+    NODE cur;
+    cur=head;
+    printf("\nname\tsinger\tdate\t");
+    while(cur!=NULL)
+    {
+        printf("\n%s\t%s\t%d-%d-%d\t",cur->data.name,cur->data.singer,cur->data.date.d,cur->data.date.m,cur->data.date.y);
+        cur=cur->next;
+    }
+    return;
+}
+
+void displayonedown(NODE cur)
+{
+    printf("\nsong  %s\nsinger  %s\ndate  %d-%d-%d",cur->data.name,cur->data.singer,cur->data.date.d,cur->data.date.m,cur->data.date.y);
+    return;
+}
+
+void displayoneline(NODE cur)
+{
+    printf("\n%s\t%s\t%d-%d-%d\t",cur->data.name,cur->data.singer,cur->data.date.d,cur->data.date.m,cur->data.date.y);
+    return;
+}
+
+void displayallreverse(NODE head)
+{
+    NODE cur;
+    for(cur=head;cur->next!=NULL;cur=cur->next);    // traverse till last node
+    while(cur!=NULL)
+    {
+        printf("\n%s\t%s\t%d-%d-%d\t",cur->data.name,cur->data.singer,cur->data.date.d,cur->data.date.m,cur->data.date.y);
+        cur=cur->prev;
+    }
+    return;
+}

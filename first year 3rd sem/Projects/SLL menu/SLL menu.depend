@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1661016083 source:c:\users\hp\desktop\sll menu\sll insert.c
+	"SLL menu header.h"
+
+1661016083 c:\users\hp\desktop\sll menu\sll menu header.h
+	<stdio.h>
+	<stdlib.h>
+
+1661016083 source:c:\users\hp\desktop\sll menu\sll menu display.c
+	"SLL menu header.h"
+
+1661016083 source:c:\users\hp\desktop\sll menu\sll read.c
+	"SLL menu header.h"
+

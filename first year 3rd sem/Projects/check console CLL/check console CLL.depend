@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1655545895 source:c:\users\hp\desktop\check console cll\main.c
+	"header.h"
+
+1655526408 c:\users\hp\desktop\check console cll\test 1.c
+	<stdio.h>
+
+1655526408 source:c:\users\hp\desktop\check console cll\test 1.c
+	<stdio.h>
+
+1655537482 source:c:\users\hp\desktop\check console cll\count_node.c
+	"header.h"
+
+1655545561 c:\users\hp\desktop\check console cll\curr_structure.c
+
+1655545561 source:c:\users\hp\desktop\check console cll\curr_structure.c
+
+1655541908 c:\users\hp\desktop\check console cll\header.h
+	<stdio.h>
+	<math.h>
+	<string.h>
+	"curr_structure.c"
+
+1655544958 source:c:\users\hp\desktop\check console cll\delete_switch.c
+	"header.h"
+
+1655537482 source:c:\users\hp\desktop\check console cll\display.c
+	"header.h"
+
+1655537656 source:c:\users\hp\desktop\check console cll\insert_switch.c
+	"header.h"
+
+1655537482 source:c:\users\hp\desktop\check console cll\read_get_node.c
+	"header.h"
+
+1655537484 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\count_node.c
+	"header.h"
+
+1655541910 c:\kapps\ace\practicals\c programs\first year\projects\check console cll\header.h
+	<stdio.h>
+	<math.h>
+	<string.h>
+	"curr_structure.c"
+
+1655545562 c:\kapps\ace\practicals\c programs\first year\projects\check console cll\curr_structure.c
+
+1655545562 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\curr_structure.c
+
+1655544960 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\delete_switch.c
+	"header.h"
+
+1655537484 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\display.c
+	"header.h"
+
+1655886570 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\insert_switch.c
+	"header.h"
+
+1655545896 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\main.c
+	"header.h"
+
+1655537484 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\read_get_node.c
+	"header.h"
+
+1655526410 source:c:\kapps\ace\practicals\c programs\first year\projects\check console cll\test 1.c
+	<stdio.h>
+

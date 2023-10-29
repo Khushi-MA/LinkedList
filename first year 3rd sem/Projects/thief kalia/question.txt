@@ -1,0 +1,46 @@
+
+Q2.
+
+Kaalia the thief wants to loot money from a society having N houses in a single line. He is a weird
+person and follows a certain rule when looting the houses. According to the rule, he will never loot
+two consecutive houses. At the same time, he wants to maximize the amount he loots. The thief
+knows which house has what amount of money but is unable to come up with an optimal looting
+strategy. He asks for your help to find the maximum money he can get if he strictly follows the rule.
+Each house has amount of money present in it. Kaalia keeps house information using Money, HNo
+and Owner name fields.
+
+
+Input format:
+The first line contains an integer N which denotes the number of houses. Next N lines contains the
+details of houses . Each record is entered on separated line
+
+Output format:
+First line prints an integer which denotes the maximum amount that he can take home.
+
+Constraints:
+1 <= HNo<= 100
+1 <= Money <= 100000
+Owner name contains maximum 30 characters
+
+
+Test Case1:
+5
+5 93 sai
+10 94 avni
+100 95 shashi
+10 96 mantesh
+5 97 amit
+
+Output:
+110
+
+
+Test Case2:
+Input :
+3
+1 7 moin
+2 8 praveen
+3 9 vijay
+
+Output: :
+4

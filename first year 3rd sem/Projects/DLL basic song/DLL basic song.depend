@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1659193138 source:c:\users\hp\desktop\dll basic song\dll counting.c
+	"DLL menu.h"
+
+1659199203 c:\users\hp\desktop\dll basic song\dll menu.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1659234733 source:c:\users\hp\desktop\dll basic song\dll display.c
+	"DLL menu.h"
+
+1659191889 source:c:\users\hp\desktop\dll basic song\dll read.c
+	"DLL menu.h"
+
+1659199431 source:c:\users\hp\desktop\dll basic song\dll delete.c
+	"DLL menu.h"
+
+1659199203 source:c:\users\hp\desktop\dll basic song\main.c
+	"DLL menu.h"
+
+1659198929 source:c:\users\hp\desktop\dll basic song\dll insert.c
+	"DLL menu.h"
+
+1659234844 source:c:\users\hp\desktop\dll basic song\dll main.c
+	"DLL menu.h"
+

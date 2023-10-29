@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1677663879 source:c:\kapps\ace\practicals\c programs\course project\dsa_course\know_hotels.c
+	"course_header.h"
+
+1677663877 c:\kapps\ace\practicals\c programs\course project\dsa_course\course_header.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+

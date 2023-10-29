@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1660780736 source:c:\users\hp\desktop\amogh tic tac toe\main.cpp
+	<iostream>
+	<stdio.h>
+
+1660780738 source:c:\kapps\ace\practicals\c programs\amogh tic tac toe\main.cpp
+	<iostream>
+	<stdio.h>
+

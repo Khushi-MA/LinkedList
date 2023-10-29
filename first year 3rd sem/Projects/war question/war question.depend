@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1656047915 source:c:\users\hp\desktop\war question\display.c
+	"war_header.h"
+
+1656047386 source:c:\users\hp\desktop\war question\main.c
+	"war_header.h"
+
+1656047686 source:c:\users\hp\desktop\war question\war insert end.c
+	"war_header.h"
+
+1656046213 source:c:\users\hp\desktop\war question\war_get_read_.c
+	"war_header.h"
+
+1656047686 c:\users\hp\desktop\war question\war_header.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1656047952 source:c:\users\hp\desktop\war question\before_male_soldier_.c
+	"war_header.h"
+

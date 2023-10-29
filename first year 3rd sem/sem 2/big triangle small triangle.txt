@@ -1,0 +1,200 @@
+https://hackerrank-challenge-pdfs.s3.amazonaws.com/65986-small-triangles-large-triangles-English?AWSAccessKeyId=AKIAR6O7GJNX5DNFO3PV&Expires=1662259143&Signature=HWzM2M9MpbMJgMrwlFWGnremVJw%3D&response-content-disposition=inline%3B%20filename%3Dsmall-triangles-large-triangles-English.pdf&response-content-type=application%2Fpdf
+
+Sample Input 0
+
+3
+7 24 25
+5 12 13
+3 4 5
+Sample Output 0
+
+3 4 5
+5 12 13
+7 24 25
+Explanation 0
+
+The square of the first triangle is . The square of the second triangle is . The square of the third triangle is . So the sorted order is the reverse one.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+struct triangle
+{
+	int a;
+	int b;
+	int c;
+};
+
+typedef struct triangle triangle;
+
+float findarea(triangle T)
+{
+    int p=(T.a+T.b+T.c)/2;
+    return (sqrt(p*(p-T.a)*(p-T.b)*(p-T.c)));
+}
+
+void sort_by_area(triangle* tr, int n) {
+	int i,j;
+    triangle temp;
+    
+    for (i = 0; i < n; i++) {
+ 
+        for (j = i + 1; j < n; j++) {
+ 
+            if (findarea(*(tr + j)) < findarea(*(tr + i))) {
+ 
+                temp = *(tr + i);
+                *(tr + i) = *(tr + j);
+                *(tr + j) = temp;
+            }
+        }
+    }
+    return;
+}
+
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	triangle *tr = malloc(n * sizeof(triangle));
+	for (int i = 0; i < n; i++) {
+		scanf("%d%d%d", &tr[i].a, &tr[i].b, &tr[i].c);
+	}
+	sort_by_area(tr, n);
+	for (int i = 0; i < n; i++) {
+		printf("%d %d %d\n", tr[i].a, tr[i].b, tr[i].c);
+	}
+	return 0;
+}
+
+
+Test cases:
+1.
+20
+23 37 47
+22 18 5
+58 31 31
+28 36 40
+54 62 11
+31 41 14
+53 18 54
+41 38 55
+55 44 44
+44 48 18
+26 41 65
+20 23 21
+58 61 50
+28 56 56
+20 39 32
+33 45 49
+26 41 62
+31 46 39
+48 49 67
+expected output:
+22 18 5
+31 41 14
+20 23 21
+54 62 11
+26 41 65
+58 31 31
+20 39 32
+26 41 62
+44 48 18
+23 37 47
+53 18 54
+28 36 40
+31 46 39
+33 45 49
+57 33 45
+28 56 56
+41 38 55
+55 44 44
+48 49 67
+58 61 50
+
+2.
+30
+67 38 58
+57 32 46
+61 70 70
+29 27 27
+59 41 33
+45 50 11
+59 56 59
+29 59 51
+68 53 53
+70 70 5
+22 58 52
+44 6 41
+53 58 61
+4 57 54
+22 26 13
+67 27 66
+52 58 19
+50 36 58
+29 61 39
+out:
+13 2 12
+4 57 54
+44 6 41
+22 26 13
+12 26 24
+70 70 5
+45 50 11
+51 12 47
+29 27 27
+14 54 53
+29 34 56
+29 36 57
+29 61 39
+52 58 19
+55 57 18
+55 20 55
+22 58 52
+59 41 33
+57 32 46
+29 59 51
+
+3.
+40
+23 55 41
+29 58 54
+24 36 26
+24 14 29
+32 63 67
+65 33 41
+41 25 45
+58 59 40
+65 40 40
+56 37 42
+63 58 41
+31 55 56
+62 9 68
+42 44 41
+16 34 24
+65 40 46
+24 70 61
+63 19 45
+18 31 24{-truncated-}
+out:
+3 45 47
+69 68 2
+63 19 45
+24 14 29
+16 34 24
+10 42 46
+17 25 31
+18 31 24
+62 9 68
+49 44 11
+59 14 69
+24 36 26
+58 12 64
+37 70 36
+54 24 38
+25 40 58
+42 21 41
+23 55 41
+55 55 16
+41 25 45{-truncated-}

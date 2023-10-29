@@ -1,0 +1,194 @@
+Question 1. 
+A company “XZY” with M number of initial employees wants to hire fresh candidates and advertises about this in well-known job seeking websites. The selection is standardized so that the deserved candidates are hired. In the initial process the company receives resumes for ‘N’ candidates. The candidates are selected if their CGPA is above 9.0. The company may also face recession and tries to implement layoffs, where in the ‘Seniority policy’ which means employees who have joined the company most recently will have to exit the company first. i.e last hired is first fired. To overcome recession the company fires for Y number of years with Seniority policy. Apply problem solving to display the remaining employees after Y number of years. Candidate/employee details: name, Address, CGPA. (Solve it by Stack)
+
+Input Format
+
+First line indicates initial no of employees present ‘M’
+
+Next M lines indicate initial present Employee details
+
+Next line indicates no of candidates sent resume ‘N’
+
+Next N lines indicates Candidate details
+
+Next line indicates Y no of years
+
+Constraints
+
+M>0, N>0, Y>0
+
+Output Format
+
+Details of candidates who are still working in company
+
+Sample Input 0
+
+4
+Andrew Pune 9.5
+Vedant Hubli 9.8
+Ram Hubli 9.7
+Raju Goa 9.6
+5
+Gopal  Mumbai  8.7
+Andrew Goa 7.7
+Venu Pune 9.6
+Puneet Bangalore 9.4
+Rajath Hubli  9.5
+2
+Sample Output 0
+
+Venu Pune 9.6
+Raju Goa 9.6
+Ram Hubli 9.7
+Vedant Hubli 9.8
+Andrew Pune 9.5
+Sample Input 1
+
+-1
+Sample Output 1
+
+Invalid
+Sample Input 2
+
+4
+Andrew Pune 9.5
+Vedant Hubli 9.8
+Ram Hubli 9.7
+Raju Goa 9.6
+1
+Gopal  Mumbai  8.7
+3
+Sample Output 2
+
+Andrew Pune 9.5
+
+
+Answer:
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX 100
+
+struct candidat_details
+{
+    char name[50],address[50];
+    float CGPA;
+};
+typedef struct candidat_details DATA;
+
+struct stack 
+{
+    DATA data[MAX];
+    int top;
+};
+typedef struct stack STK;
+
+void createstack(STK*);
+int isfull(STK);
+int isempty(STK);
+void push(STK*,DATA);
+DATA pop(STK*);
+void resume(STK*,int);
+void seniority(STK*,int);
+void displaystk(STK);
+
+int main() {
+    int M,N,Y,i;  
+    scanf("%d",&M);
+    if(M<=0){
+        printf("Invalid");
+        return 0;
+    }
+    DATA candi;
+    STK S;
+    createstack(&S);
+    for(i=0;i<M;i++){
+        scanf("%s %s %f",candi.name, candi.address,&candi.CGPA);
+        push(&S,candi);
+    }
+    scanf("%d",&N);
+    if(N<=0){
+        printf("Invalid");
+        return 0;
+    }
+    resume(&S,N);
+    scanf("%d",&Y);
+    if(Y<=0){
+        printf("Invalid");
+        return 0;
+    }
+    seniority(&S,Y);
+    displaystk(S);
+    return 0;
+}
+
+int isfull(STK A){
+    if(A.top==(MAX-1))
+        return 1;
+    
+    else
+        return 0;
+}
+
+int isempty(STK A)
+{
+    if(A.top==-1)
+        return 1;
+    
+    else
+        return 0;
+}
+
+void createstack(STK *A){
+    A->top=-1;
+    return;
+}
+
+void push(STK *A,DATA candi){
+    if(isfull(*A))
+        printf("\nStack overflow");
+    else{
+        A->top=A->top+1;
+        A->data[A->top]=candi;
+    }
+    return;
+}
+
+DATA pop(STK *A){
+    if(isempty(*A)){
+        printf("\nStack underflow");
+        return ;
+    }
+    DATA candi=A->data[A->top];
+    A->top=A->top-1;
+    return candi;
+}
+
+void resume(STK *A, int N){
+    int i;
+    DATA candi;
+    for(i=0;i<N;i++){
+        scanf("%s %s %f",candi.name, candi.address,&candi.CGPA);
+        if(candi.CGPA>9.0)
+        push(A,candi);
+    }
+    return ;
+}
+
+void seniority(STK *A, int Y){
+    int i;
+    for(i=0;i<Y;i++){
+        pop(A);
+    }
+    return;
+}
+
+void displaystk(STK A){
+    DATA candi;
+    while(A.top!=-1){
+        candi=pop(&A);
+        printf("%s %s %.1f\n",candi.name, candi.address,candi.CGPA);
+    }
+    return;
+}

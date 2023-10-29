@@ -1,0 +1,139 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+#define stacksize 1000
+
+typedef struct stack
+{
+    int num[stacksize],top;
+}STK;
+
+
+int isempty(STK);
+int isfull(STK);
+void initstack(STK*);
+void push(STK*,int);
+int pop(STK*);
+void display(STK ,int );
+int peek(STK );
+void crushgame(STK*, STK *, int );
+
+int main()
+{
+    int N;
+    scanf("%d",&N);
+    if(N<2)
+    {
+        printf("Invalid input");
+        return 0;
+    }
+
+    STK S,A;
+    initstack(&S);
+    initstack(&A);
+    int data,i;
+    for(i=0;i<N;i++)
+    {
+        scanf("%d",&data);
+        push(&S,data);
+    }
+    for(i=0;i<N;i++)
+    {
+        push(&A,pop(&S));
+    }
+    crushgame(&A,&S,N);
+    return 0;
+}
+
+int isempty(STK S)
+{
+    if(S.top==-1)
+        return 1;
+
+    else
+        return 0;
+}
+
+int isfull(STK S)
+{
+    if(S.top==(stacksize-1))
+        return 1;
+
+    else
+        return 0;
+}
+
+void initstack(STK* S)
+{
+    S->top=-1;
+    return;
+}
+
+void push(STK *S, int data)
+{
+    if(isfull(*S))
+        printf("Stack overflow");
+
+    else
+    {
+        S->top=S->top+1;
+        S->num[S->top]=data;
+    }
+    return;
+}
+
+int pop(STK *S)
+{
+    int data=0;
+    if(isempty(*S))
+        printf("Stack underflow");
+
+    else
+    {
+        data=S->num[S->top];
+        S->top=S->top-1;
+    }
+    return data;
+}
+
+void display(STK S,int N)
+{
+    int i,data;
+
+    for(i=N-1;i>-1;i--)
+    {
+        printf("\n%d",S.num[i]);
+        pop(&S);
+    }
+    return;
+}
+
+int peek(STK S)
+{
+    return S.num[S.top];
+}
+
+void crushgame(STK *A, STK *S, int N)
+{
+    int i;
+    push(S,pop(A));
+    for(i=0;A->top!=-1;i++)
+    {
+        if(peek(*S)!=peek(*A))
+            push(S,pop(A));
+
+        else
+        {
+            pop(S);
+            pop(A);
+        }
+    }
+    if(isempty(*S))
+        printf("Proceed to next level");
+
+    else
+        display(*S,N);
+    return ;
+}
+

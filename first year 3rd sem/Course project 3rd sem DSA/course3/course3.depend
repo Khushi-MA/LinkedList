@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1677948318 source:c:\kapps\ace\practicals\c programs\course project\course3\know_hotels.c
+	"course3_header.h"
+
+1678071373 c:\kapps\ace\practicals\c programs\course project\course3\course3_header.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1677859464 source:c:\kapps\ace\practicals\c programs\course project\course3\travel_car.c
+	"course3_header.h"
+
+1678194575 source:c:\kapps\ace\practicals\c programs\course project\course3\main.c
+	"course3_header.h"
+

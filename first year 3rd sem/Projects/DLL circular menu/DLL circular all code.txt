@@ -1,0 +1,374 @@
+/*
+code by KHUSHI M APPANNAVAR
+This is a menu code for Doubly Circular Linked List.
+This code is of a structure for person's ID number (integer) and name (string)
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+typedef struct person
+{
+    int id;
+    char name[100];
+}PERSON;
+
+struct node
+{
+    PERSON data;
+    struct node *next,*prev;
+};
+typedef struct node * NODE;
+
+NODE getnode();
+int listempty(NODE );
+NODE readnode(NODE );
+NODE insertbegin(NODE , NODE );
+NODE insertend(NODE ,NODE );
+NODE insertbyposition(NODE , NODE , int );
+int countnodes(NODE );
+void displayall(NODE);
+void displayone(NODE );
+void displaybyposition(NODE , int );
+NODE deletebegin(NODE );
+NODE deleteend(NODE );
+NODE deletebyposition(NODE , int );
+NODE deletebyname(NODE , char[]);
+
+int main()
+{
+    int ch1,ch2,pos,total;
+    NODE head=NULL,newnode;
+    char fname[100];
+
+    do
+    {
+        printf("\n1.Insert\n2.Delete\n3.Display\n4.Count\n100.EXIT\nEnter choice:  ");
+        scanf("%d",&ch1);
+
+        switch(ch1)
+        {
+            case 1: printf("\nInsert\n1.beginning\n2.end\n3.at a position\nEnter choice:  ");
+                    scanf("%d",&ch2);
+
+
+                    switch(ch2)
+                    {
+                        case 1: newnode=readnode(newnode);
+                                head=insertbegin(head,newnode);
+                                break;
+
+                        case 2: newnode=readnode(newnode);
+                                head=insertend(head,newnode);
+                                break;
+
+                        case 3: newnode=readnode(newnode);
+                                printf("\nenter position:\t");
+                                scanf("%d",&pos);
+                                total=countnodes(head);
+                                if(pos<1 || pos>total+1)
+                                {
+                                    printf("\nposition non existent\n");
+                                    break;
+                                }
+                                head=insertbyposition(head,newnode,pos);
+                                break;
+
+                        default: printf("\nInvalid option");
+                                 break;
+                    }
+                    break;
+
+
+            case 2: if(listempty(head))
+                    {
+                        printf("\nList is empty\n");
+                        break;
+                    }
+
+                    if(head->next==head)
+                    {
+                        printf("\nnode being deleted is\n");
+                        displayone(head);
+                        free(head);
+                        head=NULL;
+                        break;
+                    }
+
+                    printf("\nDelete\n1.beginning\n2.end\n3.By position\n4.By name\nEnter choice:  ");
+                    scanf("%d",&ch2);
+
+                    switch(ch2)
+                    {
+                        case 1: head=deletebegin(head);
+                                break;
+
+                        case 2: head=deleteend(head);
+                                break;
+
+                        case 3: printf("\nenter position:\t");
+                                scanf("%d",&pos);
+                                total=countnodes(head);
+                                if(pos<1 || pos>total+1)
+                                {
+                                    printf("\nposition non existent\n");
+                                    break;
+                                }
+                                head=deletebyposition(head,pos);
+                                break;
+
+                        case 4: printf("\nenter the name:\t");
+                                scanf("%s",fname);
+                                head=deletebyname(head,fname);
+
+                        default: printf("\nInvalid option");
+                                 break;
+                    }
+                    break;
+
+
+
+            case 3: if(listempty(head))
+                    {
+                        printf("\nList is empty\n");
+                        break;
+                    }
+
+                    printf("\nDisplay\n1.All\n2.By position\nEnter choice:  ");
+                    scanf("%d",&ch2);
+
+                    switch(ch2)
+                    {
+                        case 1: displayall(head);
+                                break;
+
+                        case 2: printf("\nenter position:\t");
+                                scanf("%d",&pos);
+                                total=countnodes(head);
+                                if(pos<1 || pos>total)
+                                {
+                                    printf("\nposition non existent\n");
+                                    break;
+                                }
+                                displaybyposition(head,pos);
+                                break;
+
+                        default: printf("\nInvalid option");
+                                 break;
+
+                    }
+                    break;
+
+            case 4: if(listempty(head))
+                    {
+                        printf("\nNumber of nodes in your list = 0\n\n");
+                        break;
+                    }
+
+                    total=countnodes(head);
+                    printf("\nNumber of nodes in your list = %d\n\n",total);
+                    break;
+
+
+            case 100: printf("\nCode exit...THANKYOU :)\n\n");
+                      break;
+
+            default: printf("\nInvalid option '_'\n\n");
+                     break;
+        }
+
+    }while(ch1!=100);
+
+    return 0;
+}
+
+NODE readnode(NODE temp)
+{
+    temp=getnode();
+    printf("\nenter id number\t");
+    scanf("%d",&temp->data.id);
+    printf("enter name:\t");
+    scanf("%s",temp->data.name);
+    return temp;
+}
+
+NODE getnode()
+{
+    NODE temp;
+    temp=(NODE)malloc(sizeof(struct node));
+    temp->next=temp->prev=temp;
+    return temp;
+}
+
+int listempty(NODE head)
+{
+    if(head==NULL)
+        return 1;
+
+    else
+        return 0;
+}
+
+NODE insertbegin(NODE head, NODE newnode)
+{
+    if(head==NULL)
+    {
+        head=newnode;
+        return head;
+    }
+    head=insertend(head,newnode);
+    head=head->prev;
+    return head;
+}
+
+NODE insertend(NODE head,NODE newnode)
+{
+    if(head==NULL)
+    {
+        head=newnode;
+        return head;
+    }
+    newnode->prev=head->prev;
+    (head->prev)->next=newnode;
+    newnode->next=head;
+    head->prev=newnode;
+    return head;
+}
+
+NODE insertbyposition(NODE head, NODE newnode, int pos)
+{
+    NODE temp;
+    if(pos==1)
+    {
+        head=insertbegin(head,newnode);
+        return head;
+    }
+    int i;
+    for(temp=head,i=1;i<pos-1;i++,temp=temp->next);
+    newnode->next=temp->next;
+    (temp->next)->prev=newnode;
+    newnode->prev=temp;
+    temp->next=newnode;
+    return head;
+}
+
+NODE deletebegin(NODE head)
+{
+    NODE temp=head;
+    (head->prev)->next=head->next;
+    (head->next)->prev=head->prev;
+    head=head->next;
+
+    printf("\nnode being deleted is\n");
+    displayone(temp);
+    free(temp);
+    return head;
+}
+
+NODE deleteend(NODE head)
+{
+   NODE temp;
+    temp=head->prev;
+    head->prev=temp->prev;
+    (temp->prev)->next=head;
+
+    printf("\nnode being deleted is\n");
+    displayone(temp);
+    free(temp);
+    return head;
+}
+
+NODE deletebyposition(NODE head, int pos)
+{
+    NODE temp;
+    if(pos==1)
+    {
+        head=deletebegin(head);
+        return head;
+    }
+    int i;
+    for(temp=head,i=1;i<=pos-1;i++,temp=temp->next);
+    (temp->prev)->next=temp->next;
+    (temp->next)->prev=temp->prev;
+    printf("\nnode being deleted is\n");
+    displayone(temp);
+    free(temp);
+    return head;
+}
+
+NODE deletebyname(NODE head, char fname[100])
+{
+    NODE temp=head;
+    do
+    {
+        if(strcmp(temp->data.name,fname)==0)
+        {
+            if(temp==head)
+            {
+                printf("\nnode being deleted is\n");
+                displayone(head);
+                free(head);
+                return NULL;
+            }
+
+            (temp->prev)->next=temp->next;
+            (temp->next)->prev=temp->prev;
+            printf("\nnode being deleted is\n");
+            displayone(temp);
+            free(temp);
+            return head;
+         }
+        temp=temp->next;
+    }while(temp!=head);
+    printf("\nName doesn't exist\n");
+    return head;
+}
+
+void displayall(NODE head)
+{
+    if(head==NULL)
+    {
+        printf("\nList is empty\n");
+        return;
+    }
+    NODE temp=head;
+    do
+    {
+        printf("\n%d %s",temp->data.id,temp->data.name);
+        temp=temp->next;
+    }while(temp!=head);
+    printf("\n\n");
+    return;
+}
+
+void displaybyposition(NODE head, int pos)
+{
+    NODE temp=head;
+    int i;
+    for(i=1;i<=pos-1;i++,temp=temp->next);
+    displayone(temp);
+    return;
+}
+
+void displayone(NODE temp)
+{
+    printf("\nid number: %d\nname:%s\n",temp->data.id,temp->data.name);
+    return;
+}
+
+int countnodes(NODE head)
+{
+    if(head==NULL)
+    {
+        return 0;
+    }
+    NODE temp=head;
+    int cnt=0;
+    do
+    {
+        cnt++;
+        temp=temp->next;
+    }while(temp!=head);
+    return cnt;
+}

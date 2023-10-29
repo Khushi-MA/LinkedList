@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1656160126 source:c:\users\hp\desktop\c programs\projects\thief kalia\kalia_display_.c
+	"kalia_header.h"
+
+1656160126 c:\users\hp\desktop\c programs\projects\thief kalia\kalia_header.h
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<string.h>
+
+1656159498 source:c:\users\hp\desktop\c programs\projects\thief kalia\kalia_get_read_.c
+	"kalia_header.h"
+
+1656160126 source:c:\users\hp\desktop\c programs\projects\thief kalia\kalia_insert_.c
+	"kalia_header.h"
+
+1656160124 source:c:\users\hp\desktop\c programs\projects\thief kalia\main.c
+	"kalia_header.h"
+

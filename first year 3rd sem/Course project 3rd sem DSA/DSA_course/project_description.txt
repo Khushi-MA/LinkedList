@@ -1,0 +1,21 @@
+FUNCTION                DATA STRUCTURE
+Hotel Rating            Tree
+Nearby Hotel Search     Kruskal’s Algorithm/Dijkstra’s Algorithm
+Airway Info             Linked List/Structured Array
+Roadway Info            Linked List/Structured Array
+Nearby Hotel            Structured Array
+Source/Destination      Array
+
+
+
+Word file link:
+https://onedrive.live.com/edit.aspx?resid=470AD3D1BA98818D!4680&ithint=file%2cdocx&authkey=!AC_U-7Ko6LpbADo
+
+
+
+
+
+
+
+
+

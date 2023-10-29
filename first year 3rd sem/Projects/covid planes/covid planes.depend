@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1655830007 source:c:\users\hp\desktop\covid planes\plane_structure.c
+
+1655979927 source:c:\users\hp\desktop\covid planes\main.c
+	"header.h"
+
+1655979878 c:\users\hp\desktop\covid planes\header.h
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<string.h>
+	"plane_structure.c"
+
+1655830007 c:\users\hp\desktop\covid planes\plane_structure.c
+
+1655980191 source:c:\users\hp\desktop\covid planes\display_one_all.c
+	"header.h"
+
+1655976339 source:c:\users\hp\desktop\covid planes\get_read_.c
+	"header.h"
+
+1655978359 source:c:\users\hp\desktop\covid planes\insert.c
+	"header.h"
+
+1655979894 source:c:\users\hp\desktop\covid planes\runway_count.c
+	"header.h"
+
+1658313582 source:c:\users\hp\desktop\c programs\projects\covid planes\display_one_all.c
+	"header.h"
+
+1655979878 c:\users\hp\desktop\c programs\projects\covid planes\header.h
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<string.h>
+	"plane_structure.c"
+
+1658315921 c:\users\hp\desktop\c programs\projects\covid planes\plane_structure.c
+
+1658313582 source:c:\users\hp\desktop\c programs\projects\covid planes\get_read_.c
+	"header.h"
+
+1655978359 source:c:\users\hp\desktop\c programs\projects\covid planes\insert.c
+	"header.h"
+
+1655830007 source:c:\users\hp\desktop\c programs\projects\covid planes\plane_structure.c
+
+1655979894 source:c:\users\hp\desktop\c programs\projects\covid planes\runway_count.c
+	"header.h"
+
+1658313582 source:c:\users\hp\desktop\c programs\projects\covid planes\main.c
+	"header.h"
+

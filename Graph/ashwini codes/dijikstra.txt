@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<conio.h>
+#define INFINITY 9999
+
+void dijikstra(int a[10][10], int n, int s);
+
+void main(){
+	int a[10][10], i, j, n, u;
+	printf("\nEnter the no. of vertices: ");
+	scanf("%d", &n);
+	printf("\nEnter the adjacency matrix:\n");
+	for(i=0;i<n;i++)
+		for(j=0;j < n;j++)
+			scanf("%d", &a[i][j]);
+	printf("\nEnter the starting node: ");
+	scanf("%d", &u);
+	dijikstra(a,n,u);
+}
+
+void dijikstra(int a[10][10], int n, int s)
+{
+	int cost[10][10], distance[10], path[10];
+	int visited[10], count, min, u, i,j;
+	for(i=0;i < n;i++)
+		for(j=0;j < n;j++)
+			if(a[i][j]==0)
+				cost[i][j]=INFINITY;
+			else
+				cost[i][j]=a[i][j];
+
+	for(i=0;i< n;i++)
+	{
+		distance[i]=cost[s][i];
+		path[i]=s;
+		visited[i]=0;
+	}
+	distance[s]=0;
+	visited[s]=1;
+	count=1;
+	while(count < n-1){
+		min=INFINITY;
+		for(i=0;i < n;i++)
+			if(distance[i] < min&&!visited[i])
+			{
+				min=distance[i];
+				u=i;
+			}
+		visited[u]=1;
+		for(i=0;i < n;i++)
+			if(!visited[i])
+				if(min+cost[u][i] < distance[i])
+				{
+					distance[i]=min+cost[u][i];
+					path[i]=u;
+				}
+			count++;
+	}
+
+	for(i=0;i < n;i++)
+		if(i!=s)
+		{
+			printf("\nDistance of %d = %d  \t", i, distance[i]);
+			printf("Path = %d", i);
+			j=i;
+			do
+			{
+				j=path[j];
+				printf("<-%d", j);
+			}
+			while(j!=s);
+		}
+}

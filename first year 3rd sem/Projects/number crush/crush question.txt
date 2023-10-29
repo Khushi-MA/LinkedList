@@ -1,0 +1,80 @@
+[Note: Should use following operations of Stack Data Structure: push(), pop(), peek(), display(), isfull(), isempty()].
+Nancy plays a numbers crush game in her leisure time. She follows a certain pattern to crush the numbers.
+She has a number with her in the beginning.
+She checks with the next number she gets.
+If both the numbers are same she crushes both the numbers.
+If Nancy has more numbers with her, she checks the next number with the most recent number she has.
+If again the numbers are same, she crushes both the numbers.
+At any point of time, if both the numbers are not same, she keeps the next number with her and continues checking.
+If Nancy is able to crush all the numbers, then she proceeds to next level to crush next set of numbers.
+If she is not able to crush all the numbers, she shows the remaining numbers.
+Apply PSF and write modular C program to help Nancy to proceed to next level.
+
+Input Format
+First line is N – numbers with Nancy. Second line is the set of numbers
+
+Constraints
+N should be more than 1, so that Nancy can check to crush them. Numbers should be positive
+
+Output Format
+Display “Proceed to next level” if Nancy is able to crush all the numbers. Otherwise display the numbers she was not able to crush.
+
+
+Sample Input 0
+
+7
+10 20 10 10 20 20 30
+
+Sample Output 0
+
+30
+20
+10
+
+Explanation 0
+First number Nancy has is 10 in the beginning.
+She checks with next incoming number 20, both are not same, she keeps the numbers.
+Nancy has 10 20. Next number is 10 in the sequence, recent number she has is 20,
+checks both the numbers, they are not same, she keeps the numbers. Nancy has 10 20 10.
+Next number is 10 in the sequence is same as recent number 10, she crushes both the numbers.
+Now Nancy is left with 10 20. Next number is 20 in the sequence is same as recent number 20,
+she crushes both the numbers. Now Nancy is left with 10.
+Next number is 20 in the sequence is not same as recent number 10, she keeps the number.
+Now Nancy is left with 10 20.
+Next number is 30 in the sequence is not same as recent number 20, she keeps the number.
+Now Nancy is left with 10 20 30.She shows the left out numbers as: 30 20 10
+
+
+
+Sample Input 1
+
+4
+12 14 14 12
+
+Sample Output 1
+
+Proceed to next level
+
+Explanation 1
+
+Explanation: Nancy has 12 in the beginning, checks with next number 14, both are not same, she keeps the numbers.
+Nancy has 12 14. Next number is 14, and Nancy has recent number 14.
+Both are same numbers, she crushes them. Nancy is left with 12.
+Next number is 12, she has recent number 12 with her. Both are same, therefore she crushes them.
+There are no further numbers to checks and Nancy also does not have any numbers with her, she proceeds to next level.
+
+
+
+Sample Input 2
+
+5
+5 6 7 9 2
+
+Sample Output 2
+
+2
+9
+7
+6
+5
+

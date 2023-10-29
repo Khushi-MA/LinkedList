@@ -1,0 +1,24 @@
+Air_India                5000    80 Pune			1 2 3 4 5 6 7 8 9 10 		1 2 3 4 5
+Indigo                  3000    90  Mumbai		1 4 6 8 9 11 13 14 25 17 	1 2 3 4 5
+Jet_Airways            5000    60 Delhi			5 7 9 30 16 28 29 12 14		1 2 3 4 5
+Vistara                  6000    30 Nagaland		1 5 8 9 22 25 26 28 29 20	6 7 8 9 10
+Go_Air                  5000    60 Dubai			3 4 10 11 13 15 17 19 20 22	3 4 5 6 7
+Trujet                   4000    90 Varanasi		1 7 27 17 13 14 25 26 27 28	3 4 5 6 7
+Star_Air                 7500    36 Manali		3 4 10 11 13 15 17 19 20 22	8 9 10 11 12
+Akasa_Air               9500    76 Ladakh			5 7 9 30 16 28 29 12 14		8 9 10 11 12
+Fly_Big                  2000    63 Bengluru		1 7 27 17 13 14 25 26 27 28	8 9 10 11 12
+Spicejet                 3500     85 Delhi		21 22 23 24 25 26 27 28 29 10	1 2 3 4 5
+Air_India                3500    90  Mumbai		21 22 23 24 25 26 27 28 29 10	7 8 9 10 11
+Indigo                  5500    60 Delhi			1 2 3 4 5 6 7 8 9 10		10 11 12 1 2
+Jet_Airways            5200    30 Nagaland		1 2 3 4 5 6 7 8 9 10		1 2 5 6 8
+Vistara                  9000    36 Manali		1 2 3 4 5 6 7 8 9 10		1 2 8 9 6
+Go_Air                  4200    90 Varanasi		21 22 23 24 25 26 27 28 29 10	3 4 5 10 11
+Trujet                   2000    63 Bengluru		3 4 10 11 13 15 17 19 20 22	5 7 9 10 12
+Star_Air                 2200    76 Ladakh		5 7 9 30 16 28 29 12 14		1 2 3 4 5
+Akasa_Air               3500     85 Delhi			1 7 27 17 13 14 25 26 27 28	4 6 8 11 12
+Fly_Big                  5000    80 Pune			1 2 3 4 5 6 7 8 9 10		2 3 4 5 6
+Spicejet       		5000    60 	Dubai			1 7 27 17 13 14 25 26 27 28	3 4 5 7 2
+
+          
+
+

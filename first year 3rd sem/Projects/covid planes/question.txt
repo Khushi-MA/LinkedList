@@ -1,0 +1,66 @@
+
+Q1.
+World is suffering from COVID-19 and the Indian Government has decided to airlift the Indians those
+are in different countries. The N number of planes are ready to fly from Bengaluru international
+airport’srun way, which is having only one entry and exit point.The commander of the operation
+will send country name CName to pilots. if Cname matches with destination country name, plane will
+fly from the run way. Otherwise the plane will enter in the second run way. Commander wants to
+know the number of planes takes off from the first run way. He also wants to know the number of
+planes entered into second runway and maximum seating capacity plane in second runway. So that
+he can use it for his next operation.
+
+Store the plane information with following fields: Plane ID, destination country Name and seating
+capacity of the plane. Insert N number of planes to the runway.
+Constraints:
+
+ 0 ≤ N ≤ 50
+ 1000 ≤ Plane Id ≤ 5000
+ Destination country Name Maximum 30 characters
+ 0 ≤ seating capacity of the plane ≤ 1000
+ CName Maximum 30 characters
+
+
+Input Format :Enter N in first line. In next lines enter each plane information on separate line. Enter
+CName on last line.
+
+
+Output format: First line shows Count of take off planes from first runway. Second line displays
+count of planes in the second runway. Next lines give plane information in second runway. Last line
+shows information of maximum seating capacity plane in second run way.
+
+
+Test case 1:
+Input:
+5
+1001 USA 300
+1005 UAE 500
+1002 USA 600
+1003 Japan 300
+1006 UK 1000
+USA
+
+
+Output :
+2
+3
+1005 UAE 500
+1003 Japan 300
+1006 UK 1000
+1006 UK 1000
+
+
+Test case 2:
+5
+1001 USA 300
+1005 USA 500
+1002 USA 600
+1003 USA 300
+1006 USA 1000
+USA
+
+Output :
+5
+0
+
+
+

@@ -1,0 +1,294 @@
+#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define nV 11  // defining the number of vertices (currently)
+#define INF 9999  // INF as in INFINITY
+
+struct hotel {
+    char name[50];
+    float ratings;
+    char addr[20];
+    int price;
+};
+
+struct node
+{
+    char* name;
+};
+
+void near_hotels(char d[]);
+void read_city_names(struct hotel hot_details[11]);
+void distance_source_dest(int, int);
+void read_road_dist(int roadway[11][11]);
+void print_2d_array(int a[11][11]);
+
+struct node cityy[14];
+struct hotel hot_details[100];
+int roadway[11][11];
+int FWroad[11][11];
+
+
+/*
+int road[50][50] = {{247,	0,	433	,449	,532	,0	,0	,0	,0	,0},
+{680	,433	,0	,837	,970	,1208	,1043	,0	,0	,0},
+{297	,449	,837	,0	,450	,690	,5,29	,0	,0	,0},
+{0	,532	,970	,450	,0,	,239	,261	,55,3	,308	,687},
+0	0	1208	690	239	0	640	335	239	618
+0	0	1043	529	261	640	0	730	538	916
+0	0	0	0	553	335	730	0	572	951
+0	0	0	0	308	239	538	572	0	396
+0	0	0	0	687	618	916	951	396	0
+}
+*/
+
+/**
+road1.txt   (input for roads)
+
+0	247	680	297	340	0	0	0	0	0
+247	0	433	449	532	0	0	0	0	0
+680	433	0	837	970	1208	1043	0	0	0
+297	449	837	0	450	690	529	0	0	0
+0	532	970	450	0	239	261	553	308	687
+0	0	1208	690	239	0	640	335	239	618
+0	0	1043	529	261	640	0	730	538	916
+0	0	0	0	553	335	730	0	572	951
+0	0	0	0	308	239	538	572	0	396
+0	0	0	0	687	618	916	951	396	0
+
+**/
+
+
+int main()
+{
+    int ;
+    char s[20],d[20];
+    int n=100, i, j;
+
+    // storing all the destinations into an array
+    // The function is just to separate the input form the code
+    read_city_names(hot_details);
+    int choice, source_city, dest_city, flag=1;
+
+    // Array-"roadway" stores the distance between connected cities
+    // The function is just to separate the input form the code
+    read_road_dist(roadway);
+
+    // To find the shortest distance between all the nodes, we are using
+    // Floyd-Warshall Algorithm.
+    // It finds the shortest distance between all the nodes
+    floydWarshall(FWroad);
+
+    printf("\nAvailable destinations to choose from:");
+    for(i=1;i<15;i++)
+        printf("\n%d. %s",i, cityy[i].name);
+
+    printf("\n\nWhat do you want to know?");
+    printf("\n1. Hotels in a city\n2. Distance between source and destination \n3. Display shortest distance between all the current available cities \n");
+    printf("4. \n5. \nEnter choice:   ");
+
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1: flag = 1;
+                // while loop makes sure that you enter the city name among the given names
+                // Therefore, it's a "testing when running" "while loop"
+                while(flag!=0)
+                {
+                    printf("\nEnter city:  ");
+                    scanf("%s",d);
+                    for(j=1, flag=1 ; j<=10 ; j++)
+                    {
+                        if(strcmp(d,cityy[j].name)==0)
+                        {
+                            dest_city=j;
+                            flag=0;
+                            break;
+                        }
+                    }
+
+                    if(flag!=0)
+                        printf("\nIncorrect city!!!  Please enter again");
+                }
+
+                printf("\nnear_hotels()\n");
+                near_hotels(d);
+                break;
+
+        case 2: // "testing when running" "while loop"
+                flag = 1;
+                while(flag!=0)
+                {
+                    printf("\nEnter source:  ");
+                    scanf("%s",s);
+
+                    for(j=1, flag=1 ; j<=10 ; j++)
+                    {
+                        if(strcmp(s,cityy[j].name)==0)
+                        {
+                            source_city=j;
+                            flag=0;
+                            break;
+                        }
+                    }
+
+                    if(flag!=0)
+                        printf("\n\nIncorrect source!!!  Please enter again\n\n");
+                }
+
+                // "testing when running" "while loop"
+                flag = 1;
+                while(flag!=0)
+                {
+                    printf("Enter destination:  ");
+                    scanf("%s",d);
+                    for(j=1, flag=1 ; j<=10 ; j++)
+                    {
+                        if(strcmp(d,cityy[j].name)==0)
+                        {
+                            dest_city=j;
+                            flag=0;
+                            break;
+                        }
+                    }
+
+                    if(flag!=0)
+                        printf("\n\nIncorrect destination!!!  Please enter again.\n\n");
+
+                    if(strcmp(d,s)==0)
+                    {
+                        printf("\nSource and destination are SAME!!! Please enter different destination.\n\n");
+                        flag = 1;
+                    }
+                }
+
+                //printf("\nprint_2d_array() Floyd warshal in switch 2:\n");
+            //print_2d_array(FWroad);
+
+                printf("\nDistance between %s and %s is %d\n", s, d, FWroad[source_city][dest_city]);
+                break;
+
+        case 3: printf("\nprint_2d_array() Floyd-Warshall table:\n");
+                print_2d_array(FWroad);
+                break;
+
+        case 4: printf("  yet done!");
+                break;
+
+        default: printf("choice unavailable :)");
+    }
+    printf("\n");
+    return 0;
+}
+
+// floyd warshall for shortest distance between all the points
+void floydWarshall(int arr[11][11])
+{
+      int graph[11][11], i, j, k;
+      read_road_dist(graph);
+      // making all zeroes as 9999 (here, equivalent to INFINITY)
+      for(i=1;i<11;i++)
+      {
+          for(j=1;j<11;j++)
+          {
+              if(graph[i][j]==0)
+              {
+                  graph[i][j]=INF;
+              }
+          }
+          graph[i][i]=0;
+      }
+
+      // copying (Our) graph array into (warshall's) matrix array
+      for (i = 1; i < nV; i++)
+        for (j = 1; j < nV; j++)
+          arr[i][j] = graph[i][j];
+
+      // Adding vertices individually
+      for (k = 1; k < nV; k++)
+      {
+            for (i = 1; i < nV; i++)
+            {
+              for (j = 1; j < nV; j++)
+              {
+                if (arr[i][k] + arr[k][j] < arr[i][j])
+                  arr[i][j] = arr[i][k] + arr[k][j];
+              }
+            }
+      }
+
+      printf("\nFloyd-Warshall road print_2d_array(arr)\n");
+      print_2d_array(arr);
+      return;
+}
+
+
+// near_hotels function reads the hotel information from existing file of hotel.txt
+// hotel.txt holds the information of hotels like- their name, city they are in, their ratings and 24 hour pricing
+void near_hotels(char d[])
+{
+    FILE*fp1;
+    fp1=fopen("hotel.txt","r");
+    printf("\nIn-city Hotel/lodge details\n");
+    printf("\n**********in near_hotels\n%s %s\n", cityy[2].name, cityy[3].name);
+    printf("Hotel\t\tRating\t\tPrice(24hr)\n");
+    for(int i=1;i<=30;i++)
+    {
+        fscanf(fp1,"%s %f %s %d", hot_details[i].name, &hot_details[i].ratings, hot_details[i].addr, &hot_details[i].price);
+
+        if(strcmp(hot_details[i].addr,d)==0)
+             printf("%-10s\t%-12.1f\t%10d\n", hot_details[i].name, hot_details[i].ratings, hot_details[i].price);
+    }
+    fclose(fp1);
+    return;
+}
+
+void read_city_names(struct hotel hot_details[11])
+{
+    cityy[1].name = "Pune";
+    cityy[2].name = "Mumbai";
+    cityy[3].name = "Shimla";
+    cityy[4].name = "Maldives";
+    cityy[5].name = "Delhi";
+    cityy[6].name = "Dubai";
+    cityy[7].name = "Varanasi";
+    cityy[8].name = "Bengluru";
+    cityy[9].name = "Manali";
+    cityy[10].name = "Ladakh";
+    cityy[11].name = "Amritsar";
+    cityy[12].name = "Agra";
+    cityy[13].name = "Jaipur";
+    cityy[14].name = "Udaipur";
+
+    return;
+}
+
+/*Shortest distance from one place to another (By road)*/
+
+
+void read_road_dist(int roadway[11][11])
+{
+    int i,j;
+
+    printf("Enter the distance\n");
+    for(i=1;i<11;i++)
+    {
+        for(j=1;j<11;j++)
+            scanf("%d",&roadway[i][j]);
+    }
+    return;
+}
+
+void print_2d_array(int a[11][11])
+{
+    int i, j;
+
+    for(i=1;i<11;i++)
+    {
+        printf("\n");
+        for(j=1;j<11;j++)
+            printf("%d\t",a[i][j]);
+    }
+    return;
+}
+
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DLL circular menu" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DLL circular menu" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DLL circular menu" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="DLL circular all code.txt" />
+		<Unit filename="DLL circular count.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DLL circular delete.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DLL circular display.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DLL circular insert.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DLL circular main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DLL circular menu.h" />
+		<Unit filename="DLL circular read.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

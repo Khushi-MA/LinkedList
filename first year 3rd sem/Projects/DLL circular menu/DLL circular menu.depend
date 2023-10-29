@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1660394069 source:c:\users\hp\desktop\dll circular menu\dll circular count.c
+	"DLL circular menu.h"
+
+1660392737 c:\users\hp\desktop\dll circular menu\dll circular menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1660392929 source:c:\users\hp\desktop\dll circular menu\dll circular delete.c
+	"DLL circular menu.h"
+
+1660394069 source:c:\users\hp\desktop\dll circular menu\dll circular display.c
+	"DLL circular menu.h"
+
+1660394069 source:c:\users\hp\desktop\dll circular menu\dll circular insert.c
+	"DLL circular menu.h"
+
+1660395079 source:c:\users\hp\desktop\dll circular menu\dll circular main.c
+	"DLL circular menu.h"
+
+1660392929 source:c:\users\hp\desktop\dll circular menu\dll circular read.c
+	"DLL circular menu.h"
+
+1660394069 source:c:\users\hp\desktop\practicals\c programs\projects\dll circular menu\dll circular count.c
+	"DLL circular menu.h"
+
+1660758418 c:\users\hp\desktop\practicals\c programs\projects\dll circular menu\dll circular menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1660476287 source:c:\users\hp\desktop\practicals\c programs\projects\dll circular menu\dll circular delete.c
+	"DLL circular menu.h"
+
+1660474125 source:c:\users\hp\desktop\practicals\c programs\projects\dll circular menu\dll circular display.c
+	"DLL circular menu.h"
+
+1660476593 source:c:\users\hp\desktop\practicals\c programs\projects\dll circular menu\dll circular read.c
+	"DLL circular menu.h"
+
+1660475409 source:c:\users\hp\desktop\practicals\c programs\projects\dll circular menu\dll circular insert.c
+	"DLL circular menu.h"
+
+1660476851 source:c:\users\hp\desktop\practicals\c programs\projects\dll circular menu\dll circular main.c
+	"DLL circular menu.h"
+
+1660477296 source:c:\kapps\ace\practicals\c programs\first year\projects\dll circular menu\dll circular count.c
+	"DLL circular menu.h"
+
+1660758420 c:\kapps\ace\practicals\c programs\first year\projects\dll circular menu\dll circular menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1660476288 source:c:\kapps\ace\practicals\c programs\first year\projects\dll circular menu\dll circular delete.c
+	"DLL circular menu.h"
+
+1660758692 source:c:\kapps\ace\practicals\c programs\first year\projects\dll circular menu\dll circular display.c
+	"DLL circular menu.h"
+
+1660758692 source:c:\kapps\ace\practicals\c programs\first year\projects\dll circular menu\dll circular main.c
+	"DLL circular menu.h"
+
+1660476594 source:c:\kapps\ace\practicals\c programs\first year\projects\dll circular menu\dll circular read.c
+	"DLL circular menu.h"
+

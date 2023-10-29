@@ -1,0 +1,24 @@
+
+In a war between two countries soldiers from country 1 were selected to fight against country 2.
+all were male soldiers and one female soldier was selected as she was best performer
+Field marshall allowed some of male soldiers  to go on war,
+then female beforea male soldier whose age is same as the female soldier's age.
+Determine the position of the female soldier
+
+NOTE:
+there is only one male soldier whose age is same as female soldier
+
+
+Input format
+first line is number of male soldiers and one female soldier going on war
+second line onward details of male soldiers
+thurd line details if one female soldier
+
+details: soldier name, gender, age
+
+constraints:
+number of soldiers is min. 5
+
+output format:
+ALl soldiers going on war
+position of female soldier

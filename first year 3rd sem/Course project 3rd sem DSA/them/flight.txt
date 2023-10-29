@@ -1,0 +1,10 @@
+air_india                5000    80
+indigo                  3000    90
+jet_airways            5000    60
+vistara                  6000    30
+go_air                  5000    60
+trujet                   4000    90
+star_air                 7500    36
+akasa_air               9500    76
+fly_big                  2000    63
+supreme_airlines    3500     85
